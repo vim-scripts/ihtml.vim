@@ -1,33 +1,35 @@
 " Vim syntax file
-" Language:	iHTML
-" Maintainer:	Mark Feeney <vim|AT|markfeeney|DOT|com>
-" Last Change:	$Id: ihtml.vim,v 1.2 2002/03/26 19:26:59 markf Exp $
-" URL:		http://www.markfeeney.com/resources/vim/syntax/ihtml.vim
-" Filenames:	*.iHTML, *.inc (some), *.iht
+" Language:     iHTML
+" Maintainer:   Mark Feeney <vim|AT|markfeeney|DOT|com>
+" Last Change:  $Id: ihtml.vim,v 1.4 2002/04/05 16:50:03 markf Exp $
+" URL:          http://www.markfeeney.com/resources/vim/syntax/ihtml.vim
+" Filenames:    *.iHTML, *.inc (some), *.iht
 "               NOTE: currently this file isn't part of the vim distro, so you
 "               have to manually set the file-type detection stuff.  See the
 "               manual for how.
+"               I simply added 'au BufNewFile,BufRead *.ihtml setlocal syn=ihtml'
+"               to my _vimrc, but there are better ways.
 "
 " INSTALLATION:
 "
 " win32:
-" 	Copy this file to c:\vim\vimfiles\syntax
-" 	Load up a new or existing iHTML file in vim
-" 	Give the command: :set syn=ihtml
-" 
+"       Copy this file to c:\vim\vimfiles\syntax
+"       Load up a new or existing iHTML file in vim
+"       Give the command: :set syn=ihtml
+"
 " Unix-ish:
 "       Copy this file to ~/.vim/syntax and follow the win32 insturctions
 "
 " It doesn't work!
-" 	Try running the following commands from in vim, or add them to your
-" 	vimrc file:
-" 	:syn enable
-" 	:colorscheme pablo (or any colorscheme)
-" 	:set syn=ihtml
+"       Try running the following commands from in vim, or add them to your
+"       vimrc file:
+"       :syn enable
+"       :colorscheme pablo (or any colorscheme)
+"       :set syn=ihtml
 "
 " OPTIONS:
-"	ihtml_no_sql_hi - set this to anything to disabled the highlighting of
-"	SQL within SQL= sections.
+"       ihtml_no_sql_hi - set this to anything to disabled the highlighting of
+"       SQL within SQL= sections.
 " CREDITS:
 "   The original version of ihtml.vim version was derived by Mark Feeney from
 "   Claudio Fleiner's html.vim, Lutz Eymers' php.vim, and also from Johannes
@@ -36,7 +38,7 @@
 " REFERENCES:
 "   [1] http://www.ihtml.com/   (Official iHTML manual)
 "   [2] http://www.ihtml.co.nz/ (Drew's quick-ref guide)
-" 
+"
 " TODO:
 "   - Date format highlighting within FMT= (maybe)
 "   - printf formatting in the appropriate spots (maybe)
@@ -87,38 +89,38 @@ syn match   iHTMLEqual +=+ contained
 " Expressions
 "
 " EXAMPLE:
-" 	<iIF EXPR=":blah NEQ 13">Do stuff</iIF>
+"       <iIF EXPR=":blah NEQ 13">Do stuff</iIF>
 "            ^^^^^^^^^^^^^^^^^^^
 " FIXME:
 "   This is getting a bit weird; the idea is that iHTML math/logic operators
 "   are really only valid within EXPR="" style attributes.  The
 "   iHTMLExpression and iHTMLAllQuotes groups are a bit of hack, but they get
 "   the job done.  There are better ways to do this, but it's usable as is.
-" 
-syn region iHTMLExpression 
-	\ contained 
-	\ transparent
-	\ keepend
-	\ start=+\sEXPR\s*=\s*\z(["'`]\)+
-	\ end=+\z1+
-	\ contains=iHTMLOperator,iHTMLEqual,iHTMLVar,iHTMLEnvVar,iHTMLSysVar,iHTMLAllQuotes,iHTMLTag,iHTMLExpressionAttrib
+"
+syn region iHTMLExpression
+        \ contained
+        \ transparent
+        \ keepend
+        \ start=+\sEXPR\s*=\s*\z(["'`]\)+
+        \ end=+\z1+
+        \ contains=iHTMLOperator,iHTMLEqual,iHTMLVar,iHTMLEnvVar,iHTMLSysVar,iHTMLAllQuotes,iHTMLTag,iHTMLExpressionAttrib
 syn keyword iHTMLExpressionAttrib EXPR
 
 " SQL
 "
 " EXAMPLE:
-" 	<iSQLMORE ALIAS="sql1" SQL="SELECT * FROM tblOne">
+"       <iSQLMORE ALIAS="sql1" SQL="SELECT * FROM tblOne">
 "                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
 " FIXME:
-" 	Same stupidness here as in EXPR=, but it works.
-" 
+"       Same stupidness here as in EXPR=, but it works.
+"
 syn region iHTMLSql
-	\ contained 
-	\ transparent
-	\ keepend
-	\ start=+\sSQL\s*=\s*\z(["'`]\)+
-	\ end=+\z1+
-	\ contains=iHTMLEqual,iHTMLVar,iHTMLEnvVar,iHTMLSysVar,iHTMLAllQuotes,iHTMLTag,iHTMLSqlAttrib,@iHTMLAddSql
+        \ contained
+        \ transparent
+        \ keepend
+        \ start=+\sSQL\s*=\s*\z(["'`]\)+
+        \ end=+\z1+
+        \ contains=iHTMLEqual,iHTMLVar,iHTMLEnvVar,iHTMLSysVar,iHTMLAllQuotes,iHTMLTag,iHTMLSqlAttrib,@iHTMLAddSql
 syn keyword iHTMLSqlAttrib SQL
 
 " attribute, everything before the '='
@@ -130,7 +132,7 @@ syn keyword iHTMLSqlAttrib SQL
 "
 syn keyword iHTMLAttrib A ADDRESS ADJUST AFTER ALIAS AMOUNT ARGS ASC ATTACH  contained
 syn keyword iHTMLAttrib B BCC BGB BGG BGR BLUE BORDER BREAKONFAILURE BREAKONNOOUTPUT BRUSH BTWN BUSY   contained
-syn keyword iHTMLAttrib CACHE CAPTURE CASE CC CCMEXP CCNUM CCYEXP CHR CITY CLEAR CLIENT CMD COLOR COLUMNS	COMMENTS COND COOKIE COUNTRY CREATE CURRENCY  contained
+syn keyword iHTMLAttrib CACHE CAPTURE CASE CC CCMEXP CCNUM CCYEXP CHR CITY CLEAR CLIENT CMD COLOR COLUMNS COMMENTS COND CONTENT COOKIE COUNTRY CREATE CURRENCY  contained
 syn keyword iHTMLAttrib DATA DATE1 DATE2 DATE DAY DBNAME DELETE DELIM DIRECTION DIRFAIL DISCARD DLL DRIVER DST DSN DSTNAME  contained
 syn keyword iHTMLAttrib EHANDLE EMPTY END ESC EVAL EXPR EXT EXPIRES  contained
 syn keyword iHTMLAttrib FAILURE FILENAME FILE FILT FINAL FIRST FLAGS FMT FONT FROM FUNCTION  contained
@@ -197,7 +199,7 @@ syn region iHTMLNotATag
 " EXAMPLE:
 "
 " </iIF ALIAS="asdf">
-" ss^^^^^^^^^^^^^^^^e                
+" ss^^^^^^^^^^^^^^^^e
 "
 syn region   iHTMLEndTag
     \ start=+</i[^ /!?<>"']\@=+
@@ -212,17 +214,17 @@ syn region iHTMLNotAnEndTag
     \ display
 
 " valid iHTML end tag names and attributes
-" 
+"
 " EXAMPLE:
 "
 " </iIF ALIAS="asdf">
 "   ^^^ #####
-"  
-syn keyword iHTMLEndTagName	iCASE iDBLOOP iDBQUERY iDBRESULTS iDBTABLE iFTP iFUNCTION iIF iPORT iSQL iSQLTRANS iSWITCH iTELNET iWHILE contained
-syn keyword iHTMLEndTagAttrib	ALIAS EHANDLE contained
+"
+syn keyword iHTMLEndTagName     iCASE iDBLOOP iDBQUERY iDBRESULTS iDBTABLE iFTP iFUNCTION iFORMAT iIF iPORT iSQL iSQLTRANS iSWITCH iTELNET iWHILE iMAIL iERROR contained
+syn keyword iHTMLEndTagAttrib   ALIAS EHANDLE contained
 
 " environment variables
-syn keyword iHTMLEnvVar	i_auth_pass i_auth_type i_auth_user i_browser i_content_length i _error i_errortext i_http_from i_ip i_loop i_method i_path i_path_info i_port i_query_string i_referer i_server_extension i_server_protocol i_server_software i_sqlempty i_sqlerrortext i_badtag i_content_type i_cookie_path i_cookie_life i_currentpage i_diedat i_DSD i_errordetail i_fdate i_hinttext i_os i_pop_size i_prevpage i_remote_host i_servername i_sqlerrorstmt i_timestamp i_vpath contained 
+syn keyword iHTMLEnvVar i_auth_pass i_auth_type i_auth_user i_browser i_content_length i_error i_errortext i_http_from i_ip i_loop i_method i_path i_path_info i_port i_query_string i_referer i_server_extension i_server_protocol i_server_software i_sqlempty i_sqlerrortext i_badtag i_content_type i_cookie_path i_cookie_life i_currentpage i_diedat i_DSD i_errordetail i_fdate i_hinttext i_os i_pop_size i_prevpage i_remote_host i_servername i_sqlerror i_sqlerrorstmt i_timestamp i_vpath contained
 " TODO: problem here with matching environment vars followed by end-of-line
 syn match iHTMLEnvVar +i_priv_\w\++
 syn match iHTMLEnvVar +i_http_\w\++
@@ -247,7 +249,7 @@ syn match   iHTMLSysVar                 +:i\$\(crlf\|cr\|lf\|tab\|space\|ff\|esc
 "
 " <iREM -- this is a comment --> <iREM as is this>
 " <iREMBLOCK>
-" 	blocks are handy
+"       blocks are handy
 " </iREMBLOCK>
 "
 syn region  iHTMLComment start=+<iREM+ end=+>+
@@ -255,31 +257,31 @@ syn keyword iHTMLTodo         TODO FIXME XXX
 syn region iHTMLCommentBlock start=/<iREMBLOCK/ end=/<\/iREMBLOCK>/ fold
 
 " Number (integers)
-syn match iHTMLNumber	"-\=\<\d\+\>"	contained
+syn match iHTMLNumber   "-\=\<\d\+\>"   contained
 
 " Float (floating point/decimal)
-syn match iHTMLFloat	"\(-\=\<\d+\|-\=\)\.\d\+\>"	contained
+syn match iHTMLFloat    "\(-\=\<\d+\|-\=\)\.\d\+\>"     contained
 
 " Operator
-syn match	iHTMLOperator	"[-+%^|~&*!()]"	contained
-syn match	iHTMLOperator	"\<and\>\|\<or\>\|\<xor\>\|\<not\>"	contained
-syn keyword	iHTMLOperator	PLUS MINUS TIMES DIV LT GT EQ EQUAL EQUALS IS P POW POWTEN NE NEQ != # C COS S SIN T TAN N LN MOD NOT COMPLEMENT K GE GTE L LE LTE E EXP ETOX ACOS ACS ASIN ASN ATAN ATN G LOG contained
+syn match       iHTMLOperator   "[-+%^|~&*!()]" contained
+syn match       iHTMLOperator   "\<and\>\|\<or\>\|\<xor\>\|\<not\>"     contained
+syn keyword     iHTMLOperator   PLUS MINUS TIMES DIV LT GT EQ EQUAL EQUALS IS P POW POWTEN NE NEQ != # C COS S SIN T TAN N LN MOD NOT COMPLEMENT K GE GTE L LE LTE E EXP ETOX ACOS ACS ASIN ASN ATAN ATN G LOG contained
 
 " The iHTMLAllQuotes group is a bit of a hack to make quotes highlight
 " nicely in weird situations like iHTMLExpression (basically, anywhere special
 " rules exist within strings after certain tag attributes)
-syn match	iHTMLAllQuotes +['"`]+ contained
+syn match       iHTMLAllQuotes +['"`]+ contained
 
 
 " 'bang' iHTML tags (start and end)
 syn region iHTMLBang
-	\ matchgroup=iHTMLTag
-	\ start=+</\=!iHTML+rs=e-5
-	\ end=+>+re=e-1
+        \ matchgroup=iHTMLTag
+        \ start=+</\=!iHTML+rs=e-5
+        \ end=+>+re=e-1
 
 
 "
-" Foldable regions 
+" Foldable regions
 " I've chosen to to allow folding of everything, since that's just overkill
 " and will slow things down.  It's easy to add more regions if you're so
 " inclined. Note that iREMBLOCK is already fold-able.
@@ -296,41 +298,41 @@ syn region iHTMLFoldable start=/<iLOOP[^>]*>/ end=/<\/iLOOP[^>]*>/ keepend exten
 syn sync fromstart
 
 " The default highlighting.
-hi def link iHTMLTodo		Todo
+hi def link iHTMLTodo           Todo
 
 " tags and attributes
-hi def link iHTMLTag		Function
-hi def link iHTMLTagName	Statement
-hi def link iHTMLEndTag		Function
-hi def link iHTMLEndTagName	Statement
+hi def link iHTMLTag            Function
+hi def link iHTMLTagName        Statement
+hi def link iHTMLEndTag         Function
+hi def link iHTMLEndTagName     Statement
 
-hi def link iHTMLAttrib		Type
-hi def link iHTMLEndTagAttrib	Type
-hi def link iHTMLExpressionAttrib	Type
-hi def link iHTMLSqlAttrib	Type
+hi def link iHTMLAttrib         Type
+hi def link iHTMLEndTagAttrib   Type
+hi def link iHTMLExpressionAttrib       Type
+hi def link iHTMLSqlAttrib      Type
 
 " colon/env/system variables
-hi def link iHTMLVar		Identifier
-hi def link iHTMLEnvVar		Type
-hi def link iHTMLVarPunct	Delimiter
-hi def link iHTMLSysVar		Type
-hi def link iHTMLSysVarPunct	Operator
+hi def link iHTMLVar            Identifier
+hi def link iHTMLEnvVar         Type
+hi def link iHTMLVarPunct       Delimiter
+hi def link iHTMLSysVar         Type
+hi def link iHTMLSysVarPunct    Operator
 
 " the basics: strings, numbers, operators, etc.
-hi def link iHTMLEqual		Function
-hi def link iHTMLAllQuotes	Delimiter
-hi def link iHTMLQuote		Delimiter
-hi def link iHTMLString		String
-hi def link iHTMLNumber		Number
-hi def link iHTMLFloat		Float
-hi def link iHTMLOperator	Operator
+hi def link iHTMLEqual          Function
+hi def link iHTMLAllQuotes      Delimiter
+hi def link iHTMLQuote          Delimiter
+hi def link iHTMLString         String
+hi def link iHTMLNumber         Number
+hi def link iHTMLFloat          Float
+hi def link iHTMLOperator       Operator
 
 " comments
-hi def link iHTMLComment	Comment
-hi def link iHTMLCommentBlock	Comment
+hi def link iHTMLComment        Comment
+hi def link iHTMLCommentBlock   Comment
 
 " misc stuff
-hi def link iHTMLBang		Special
+hi def link iHTMLBang           Special
 
 let b:current_syntax = "ihtml"
 
