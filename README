@@ -1,0 +1,6 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=255
+
+Does "smart" highlighting of all iHTML syntax.  Handles up to iHTML Enterprise Edition 2.20.  Also highlights SQL within SQL= attributes (which you can turn off if you'd like).  If you're using foldmethod=syntax, there are some nice folds setup by this syntax file.
+
+Latest version always available here:
+http://www.markfeeney.com/resources/ihtml.vim
